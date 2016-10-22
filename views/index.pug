@@ -1,0 +1,32 @@
+doctype html
+- var members = [{name:'Maroš Ondrejka', data:'maros-ondrejka' }, {name:'Albert Russ', data:'albert-russ' }, {name:'Tomáš Kösegi', data:'tomas-kosegi' }];
+mixin section(link, name)
+  a(href=link).c-section
+    .c-section__background
+    .c-section__name
+      h2.c-section__name--title=name
+
+html(lang="sk")
+  head
+    meta(charset="UTF-8")
+    meta(name="description", content="responsive navigation")
+    meta(name="author", content="giTo")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title index
+    link(rel="stylesheet", href="main.css")
+  body#js-page
+    header.l-header
+      .js-member-anim.c-member--author(data-member=members[1].data)
+        //- figure.c-member__figure--author
+          //- img.c-member__image--author(src='images/' + members[1].data + '-bw.png' alt=members[1].name)
+        //- figcaption.c-member__figcaption--author
+        h2 Fotografie:
+        h3.c-member__name--author #{members[1].name}
+    main.l-main
+      h1 Hello!
+
+    #js-modal.c-modal
+    script(src="js/TweenMax.min.js")
+    script(src="js/onload.js")
+    script(src="js/util.js")
+    script(src="js/profiles.js")
