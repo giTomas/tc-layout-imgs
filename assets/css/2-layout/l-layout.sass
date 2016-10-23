@@ -1,19 +1,33 @@
 .l-main
   // padding-top: ($vertical-rhytm * 2)
-  display: flex
-  min-height: 200vh
+  // display: flex
+  // min-height: 200vh
+  margin: 0 3%
   margin: 0 $main-margin
+  padding: 0 3%
+  padding: 0 $main-margin
   border-left: 1px dashed $border-color
   border-right: 1px dashed $border-color
+  border-left: 1px dashed $jadeit
+  border-right: 1px dashed $jadeit
 
+  padding: $vertical-rhytm * 3 $main-margin
+  @media(min-width: 1400px)
+    max-width: 1200px
+  @media(max-width: 320px)
+    margin: 0
 
 .l-header
   // border-bottom: 1px dashed $border-color
-  background-color: $background-color
+  background-color: rgba($background-color, 0.9)
   position: fixed
-  z-index: 999
+  // z-index: 999
   top: 0
   left: 0
-  box-shadow: -12px 4px 15px lighten(grey, 25%)
+  width: 100%
+  // box-shadow: 0 0 15px lighten(grey, 25%)
+  box-shadow: 0 2px 15px grey
 
 .l-section
+  // width: 100%
+  margin-bottom: $vertical-rhytm * 2

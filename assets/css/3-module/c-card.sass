@@ -1,0 +1,112 @@
+//layout
+.l-section
+  // width: 100%
+  margin-bottom: $vertical-rhytm * 2
+  display: flex
+  flex-wrap: wrap
+
+
+.l-1-2,
+.l-2-2
+  display: flex
+  flex: 1 1 auto
+  width: calc(50% - #{$vertical-rhytm / 2})
+
+// .l-1-2:nth-child(2),
+// .l-1-2:nth-of-type(2),
+.l-2-2
+  margin-left: $vertical-rhytm
+
+.l-1-2 + .l-1-2
+  margin-left: $vertical-rhytm
+
+.l-multicolumn
+  columns: 2 200px
+  column-fill: fill
+  column-gap: $vertical-rhytm
+  flex: 1 1 auto
+
+
+.c-card
+  display: flex
+  flex-wrap: wrap
+  // border-top: 1px dashed $jadeit
+  // border-bottom: 1px dashed $jadeit
+  // align-items: flex-end
+  // columns: 2 500px
+
+.c-card__1-1,
+.c-card__1-2
+  display: flex
+  width: calc(50% - #{$vertical-rhytm / 2})
+
+// .c-card__1-2
+  flex: 1 1 auto
+
+.c-card__multicolumn-1-2,
+.c-card__multicolumn,
+.c-card__figure,
+.c-card__1-1
+  width: calc(50% - #{$vertical-rhytm / 2})
+
+
+.c-card__multicolumn,
+.c-card__1-2
+  margin-left: $vertical-rhytm
+
+.c-card__figure,
+.c-card__figure-1-2,
+.c-card__figcap,
+.c-card__multicolumn
+.c-card__multicolumn-1-2
+    // margin-top: -2px
+    // margin-bottom: -2px
+    // max-width: 50%
+    flex: 1 1 auto
+    @media(max-width: 800px)
+      max-width: none
+      width: 100%
+
+.c-card__figure-1-2,
+.c-card__multicolumn-1-2,
+.c-card__figcap
+  width: calc(50% - #{$vertical-rhytm / 2})
+
+.c-card__text
+  font-size: $font-size-small
+  margin-bottom: $vertical-rhytm / 2
+  // page-break-inside: avoid
+  // break-inside: avoid
+    // work weird in mozzila and chrome
+    // column-span: all
+
+.c-card__text:first-child
+  &:first-letter
+    color: $jadeit
+    font-weight: bold
+
+.c-card__image
+  box-shadow: 0 0 10px grey
+  cursor: zoom-in
+
+.c-card__multicolumn,
+.c-card__figcap
+  // column-count: 2
+  // column-width: 300px
+  // margin-top: $vertical-rhytm / 2
+  // min-height: 200px
+  margin-left: $vertical-rhytm
+  //nice in mozzila evenly distributed text between columns
+
+.c-card__multicolumn,
+.c-card__multicolumn-1-2
+  column-fill: fill
+  columns: 2 200px
+  // align-self: flex-end
+  // border-bottom: 1px dashed $jadeit
+  @media(max-width: 800px)
+    margin-left: 0
+
+.c-card__figure
+  @media(max-width: 800px)
+    margin-bottom: $vertical-rhytm

@@ -11,7 +11,7 @@
   display: flex
   flex-wrap: wrap
   padding: $vertical-rhytm
-
+  box-shadow: 0 0 15px lighten(black, 20%)
 .c-profile
   visibility: hidden
   position: absolute
@@ -34,7 +34,7 @@
 
 .c-profile__name,
 .c-profile__name-2
-  font-size: $font-size-base
+  font-size: $font-size-large-1
   font-weight: bold
   margin-bottom: $vertical-rhytm
   text-align: center
@@ -55,6 +55,8 @@
 .c-profile__text-2
   padding-left: $vertical-rhytm
   font-size: $font-size-small
+  @media(max-width: 500px)
+    padding-left: 0
 
 .c-profile__text-2
   visibility: hidden

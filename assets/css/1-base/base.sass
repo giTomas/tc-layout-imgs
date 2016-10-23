@@ -1,5 +1,5 @@
 html
-  background-color: black
+  background-color: white
 
 body
   // font-family: 'Questrial', sans-serif
@@ -13,8 +13,12 @@ body
   line-height: $base-line-height
   font-size: $base-font-size
   color: $font-color
-  text-rendering: optimizeLegibility
-  background:
+  text-rendering: optimizeLegibility !important
+  font-kerning: normal
+  // text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
+  // -webkit-font-smoothing: antialiased !important
+  // -moz-osx-font-smoothing: grayscale !important
+  // background:
     image: url('images/background/cork-wallet.png')
 
 
@@ -30,6 +34,18 @@ h1
 
 p
   margin-bottom: $vertical-rhytm
+
+a
+  color: $font-color
+  transition: color 0.22s ease 0.1s
+  outline: 0
+  text-decoration: none
+  &:hover
+    color: $jadeit
+  &:active,
+  &:focus
+    outline: 0
+
 
 img
   width: 100%
