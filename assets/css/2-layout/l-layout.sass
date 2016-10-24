@@ -19,7 +19,7 @@
 
 .l-header
   // border-bottom: 1px dashed $border-color
-  background-color: rgba($background-color, 0.9)
+  background-color: rgba($background-color, 0.88)
   position: fixed
   // z-index: 999
   top: 0
@@ -28,6 +28,70 @@
   // box-shadow: 0 0 15px lighten(grey, 25%)
   box-shadow: 0 2px 15px grey
 
-.l-section
+//flex
+
+.l-f-section
   // width: 100%
   margin-bottom: $vertical-rhytm * 2
+  display: flex
+  flex-wrap: wrap
+
+//golden ratio layoout
+
+.l-g-col-1-2
+  width: 38.19%
+
+.l-g-col-2-2
+  width: 61.8%
+  padding-left: $vertical-rhytm
+  @media(max-width: 500px)
+    padding-left: 0
+
+.l-g-col-1-1,
+.l-g-col-2-2
+  @media(max-width: 500px)
+    width: 100%
+
+//stromatic */4 layout
+
+.l-s-1-2,
+.l-s-2-2,
+.l-s-3-4
+  display: flex
+  flex: 1 1 auto
+  width: calc(50% - #{$vertical-rhytm / 2})
+
+.l-s-2-2
+  margin-left: $vertical-rhytm
+
+.l-s-1-2 + .l-s-1-2,
+.l-s-3-4 + .l-s-1-4,
+.l-s-1-3 + .l-s-1-3
+  margin-left: $vertical-rhytm
+
+
+.l-s-3-4
+  width: calc(75% - #{$vertical-rhytm / 2})
+
+.l-s-1-4
+  width: calc(25% - #{$vertical-rhytm / 2})
+
+.l-s-1-1
+  width: 100%
+
+.l-s-1-3
+  width: calc((100% / 3) - (#{$vertical-rhytm} * 3 / 5))
+  // - (calc(2 * #{$vertical-rhytm} / 3))
+
+.l-s-multicolumn
+  columns: 2 200px
+  column-fill: fill
+  column-gap: $vertical-rhytm
+  flex: 1 1 auto
+
+.l-s-multicolumn-auto
+  columns: 4 200px
+  column-fill: fill
+  column-gap: $vertical-rhytm
+  flex: 1 1 auto
+  margin-bottom: calc(-#{$vertical-rhytm} / 2)
