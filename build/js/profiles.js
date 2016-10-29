@@ -1,42 +1,10 @@
 'use strict';
 
-function animation_1(modal) {
-  var tl = new TimelineLite();
-  tl.to(modal, 0.1, { display: 'block' }).to(modal, 0.5, { backgroundColor: 'rgba(0, 0, 0, 0.9)', ease: Power1.easeOut }).to(document.getElementById('js-profile'), 0.6, { left: '50%', autoAlpha: 1, force3D: true, ease: Power1.easeOut });
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-  document.getElementById('js-modal-close').addEventListener('click', function () {
-    tl.to(document.getElementById('js-profile'), 0.5, { left: '54%', autoAlpha: 0, force3D: true, ease: Power1.easeIn }).to(modal, 0.5, { backgroundColor: 'rgba(0, 0, 0, 0)', ease: Power1.easeIn }).to(modal, 0.5, { clearProps: 'all' });
-  }, false);
-}
+function createView(el, tmp, anim, src) {
+  'use strict';
 
-function animation_2(modal, src) {
-  var tl = new TimelineLite();
-  src.classList.add('member-is-clicked');
-
-  tl.to(modal, 0.1, { display: 'block' }).to(modal, 0.5, { backgroundColor: 'rgba(128, 128, 128, 0.9)' }).to(document.getElementById('js-profile'), 0.6, { left: '50%', autoAlpha: 1, force3D: true, ease: Power1.easeOut });
-  // .to(profile, 0.6, { autoAlpha: 1, force3D: true, ease: Power1.easeOut});
-
-  // document.getElementById('js-modal-close').addEventListener('click', function() {
-  document.getElementById('js-modal-close').addEventListener('click', function () {
-    tl.to(document.getElementById('js-profile'), 0.5, { left: '54%', autoAlpha: 0, force3D: true, ease: Power1.easeIn }).to(modal, 0.5, { backgroundColor: 'rgba(0, 0, 0, 0)' }).to(modal, 0, { clearProps: 'all' });
-
-    setTimeout(function () {
-      return src.classList.remove('member-is-clicked');
-    }, 900);
-  }, false);
-}
-
-function addModal(el, tmp, anim) {
-  if (typeof tmp === 'undefined') {
-    console.log(tmp);
-    return;
-  }
-  var modal = document.getElementById(el);
-  modal.innerHTML = tmp;
-  anim(modal);
-};
-
-function addModal2(el, tmp, anim, src) {
   if (typeof tmp === 'undefined') {
     console.log(tmp);
     return;
@@ -44,29 +12,36 @@ function addModal2(el, tmp, anim, src) {
   var modal = document.getElementById(el);
   modal.innerHTML = tmp;
   return anim(modal, src);
-};
+}
 
 function profileHandler(e) {
   //promise???
-  var profile = findData(data.profiles, 'id', e.currentTarget.dataset.id);
-  var markup = Tmps.markupProfiles(profile);
-  addModal('js-modal', markup, animation_1);
-}
+  'use strict';
 
-function profileHandler_2(e) {
-  //promise???
   var src = e.currentTarget;
-  // const profile = findValueByIndex(profiles, 'id', src.dataset.member);
-  var profile = findValue(data.profiles, 'id', src.dataset.id);
-  var markup = Tmps.markupProfiles(profile);
 
-  addModal2('js-modal', markup, animation_2, src);
+  var _src$dataset$prot$spl = src.dataset.prot.split('.');
+
+  var _src$dataset$prot$spl2 = _slicedToArray(_src$dataset$prot$spl, 2);
+
+  var type = _src$dataset$prot$spl2[0];
+  var id = _src$dataset$prot$spl2[1];
+  //const config = {
+  // arr: data[type],
+  // data: id
+  // };
+  // const createMarkup = compose(findValue, Tmps.markupProfiles);
+  //console.log(type + ',' + id);
+  // const profile = findValueByIndex(data.profiles, 'id', src.dataset.id);
+  // const profile = findValue(data[type], 'id', id);
+  // const profile = findValue({arr: data[type], data: id});
+  // const markup = Tmps.markupProfiles(profile);
+  // const markup = createMarkup({arr: data[type], data: id});
+  // addModal('js-modal', markup, anim_modal, src);
+
+  createView('js-modal', createMarkup({ arr: data[type], data: id }), anim_modal, src);
 }
 
-var members = document.querySelectorAll('.js-member');
-var members_2 = document.querySelectorAll('.js-member-anim');
 var modal = document.querySelectorAll('.js-modal');
 
-forEachEl(members, profileHandler);
-forEachEl(members_2, profileHandler_2);
-forEachEl(modal, profileHandler_2);
+forEachEl(modal, profileHandler);

@@ -1,7 +1,7 @@
 const Tmps = (function(){
-
-  const _markupProfiles = (obj) => {
-    if (!isObject(obj)) {
+  'use strict';
+  const _markupProfiles = function({id, name, text}) {
+    if (!isObject(arguments[0])) {
         console.log('Invalid object');
         return obj;
     }
@@ -11,14 +11,14 @@ const Tmps = (function(){
           <div id='js-profile' class='c-profile'>
               <div class='l-g-col-1-2'>
                 <figure class=c-profile__figure>
-                  <img src='images/${obj.id}.jpg' alt='${obj.name}'>
+                  <img src='images/${id}.jpg' alt='${name}'>
                 </figure>
                   <h2 class='c-profile__name'>
-                    ${obj.name}
+                    ${name}
                   </h2>
               </div>
               <div class='l-g-col-2-2'>
-                  <p class='c-text'>${obj.text}</p>
+                  <p class='c-text'>${text}</p>
               </div>
               <div id='js-modal-close' class='c-modal__close'>
                 <svg fill="#000000" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">

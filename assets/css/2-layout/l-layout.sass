@@ -17,18 +17,29 @@
   @media(max-width: 320px)
     margin: 0
 
-.l-header
+.c-header
   // border-bottom: 1px dashed $border-color
+  // margin: 0 3%
+  // display: flex
   background-color: rgba($background-color, 0.88)
+  // background-color: rgba($background-color, 0.5)
+  // filter: blur(1px)
   position: fixed
-  // z-index: 999
+  z-index: 999
   top: 0
   left: 0
   width: 100%
   // box-shadow: 0 0 15px lighten(grey, 25%)
-  box-shadow: 0 2px 15px grey
+  // box-shadow: 0 2px 5px grey
+  border-bottom: 1px solid lighten(grey, 15%)
+  box-shadow: 0 0 6px lighten(grey, 10%)
 
 //flex
+
+
+.l-f-row
+  display: flex
+  width: 100%
 
 .l-f-section
   // width: 100%
