@@ -1,5 +1,5 @@
 
-  function createView(el, tmp, anim, src) {
+  function changeView(el, tmp, anim, src) {
     'use strict';
     if (typeof tmp === 'undefined') {
       console.log(tmp);
@@ -7,9 +7,11 @@
     }
     const modal = document.getElementById(el);
     modal.innerHTML = tmp;
-    return anim(modal, src);
+    // console.log(tmp);
+    anim(modal, src);
   }
 
+  const createMarkup = compose(findValue, Tmps.markupProfiles);
 
   function profileHandler(e) {   //promise???
     'use strict';
@@ -27,7 +29,7 @@
     // const markup = Tmps.markupProfiles(profile);
     // const markup = createMarkup({arr: data[type], data: id});
     // addModal('js-modal', markup, anim_modal, src);
-    createView('js-modal', createMarkup({arr: data[type], data: id}), anim_modal, src);
+    changeView('js-modal', createMarkup({arr: data[type], data: id}), show_modal, src);
   }
 
   const modal = document.querySelectorAll('.js-modal');

@@ -1,7 +1,7 @@
 'use strict';
 
 var Onload = function () {
-  "use strict;";
+  "use strict";
 
   var interval = setInterval(function () {
     if (document.readyState === 'complete') {
@@ -16,4 +16,4 @@ var Onload = function () {
   };
 }();
 
-Onload.interval;
+// Onload.interval;

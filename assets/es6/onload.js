@@ -1,5 +1,5 @@
 const Onload = (function(){
-  "use strict;"
+  "use strict";
 
   const interval = setInterval(() => {
     if(document.readyState === 'complete') {
@@ -11,7 +11,7 @@ const Onload = (function(){
 
   return {
     interval: interval
-  }
+  };
 })();
 
-Onload.interval;
+// Onload.interval;

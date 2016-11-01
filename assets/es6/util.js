@@ -1,8 +1,12 @@
   // utils
+  const getType = (el) => Object.prototype.toString.call(el).slice(8, -1);
 
   const isObject = function(elem) {
-      const getType = (el) => Object.prototype.toString.call(el).slice(8, -1);
       return getType(elem) === 'Object';
+  };
+
+  const isFunction = function(elem){
+    return getType(elem) === "Function";
   };
 
   function forEachEl_2(els, fn) {
@@ -52,22 +56,41 @@
 
 //function overloading
 
-const dispatch = function(...fns) {
+  const dispatch = function(...fns) {
 
-  return function(...args){
-    for (let fn of fns) {
-      let result = fn(...args);
-      if (exists(result)) {return result;}
-    }
+    return function(...args){
+      for (let fn of fns) {
+        let result = fn(...args);
+        if (exists(result)) {return result;}
+        // return result !== undefined ? result : undefined;
+      }
+    };
   };
-};
+  // find nevrati vysledok funkcie, ale iba funkciu samotnu, ktora splna podmienku , mozno by sa to dalo riesit data streamom!
+  // map find do the work!!
+  // interesting possiblity to do this with filter function returns array of results. Could by applicated to functions that works with same args
+  // rozdiel oproti function composition vyberie sa jedna funkcia, ktora sa pouzije
+  // stream 1) find 2) execute function ale tym padom bude funckia exec dvakrat, ale na druhej strane nemusia byt exec vsetky funckie ako pri map-filter
+  const dispatch_f = (...fns) => (...args) => {
+    return [...fns].map(fn => fn(...args)).find((result) => result !== undefined);
+  };
 
-function exists(value){
-return value !== undefined;
-}
+  // 1) find 2) execute
+  // Could be refactored?
+  const dispatch_f2 = (...fns) => (...args) => {
+    return [...fns].map(fn => fn(...args)).find((result) => result !== undefined);
+  };
+
+  function notExists(value){
+    return value === undefined;
+  }
+  function exists(value){
+    return value !== undefined;
+  }
 
 //function composition
  const compose = (...funcs) => (value) => funcs.reduce((v, fn) => fn(v), value);
+ const pipe = (...funcs) => (value) => funcs.reduce((v, fn) => fn(v), value);
 
 //markup
  const createMarkup = compose(findValue, Tmps.markupProfiles);
